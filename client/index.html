@@ -4,16 +4,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body ng-controller="MainCtrl">
+<body>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <h4 class="navbar-brand" ng-model="hostname.hostname"></h4>
+        <h4 class="navbar-brand" ng-if="hostname"><span class="text-green">Connected:</span> {{ hostname }}</h4>
+        <h4 class="navbar-brand text-red" ng-if="!hostname">Not Connected</h4>
       </div>
     </div>
   </nav>
-  
-  <p ng-model="hostname.hostname"></p>
 
   <div ui-view></div>
 
@@ -25,6 +24,6 @@
 
   <!-- Angular App Files -->
   <script type="text/javascript" src="angular/app.js"></script>
-  <script type="text/javascript" src="angular/controllers/MainCtrl.js"></script>
+  <script type="text/javascript" src="angular/controllers/RootCtrl.js"></script>
 </body>
 </html>
