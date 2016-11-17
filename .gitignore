@@ -1,0 +1,7 @@
+server/node_modules
+server/npm-debug.log
+npm-debug.log
+
+client/dist/components
+
+**/*.swp
