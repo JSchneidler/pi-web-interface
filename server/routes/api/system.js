@@ -7,7 +7,9 @@ var systemController = require(config.server.dbPath + '/controllers/systemContro
 
 // GET /api/system
 router.get('/', systemController.index);
-
+// GET /api/system/files
 router.get('/files', systemController.files);
+// GET /api/system/hostname
+router.get('/hostname', systemController.hostname);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var debug = require('gulp-debug');
 var sass = require('gulp-sass');
-var clean = require('gulp-clean');
+var del = require('del');
 var mocha = require('gulp-mocha');
 var chai = require('chai');
 var mongoose = require('mongoose');
@@ -26,9 +26,13 @@ gulp.task('mocha', function() {
 });
 
 gulp.task('clean', function() {
-	return gulp.src([client + 'dist/**/*',  '!' + client + 'dist/components', '!' + client + 'dist/components/**'], { read: false })
-		.pipe(debug())
-		.pipe(clean({ force: true }));
+	//return gulp.src([client + 'dist/**/*',  '!' + client + 'dist/components', '!' + client + 'dist/components/**'], { read: false })
+		//.pipe(clean({ force: true }));
+	return del([
+		client + 'dist/**/*',
+		'!' + client + 'dist/components',
+		'!' + client + 'dist/components/**/*'
+	], { force: true });
 });
 
 gulp.task('sass', ['clean'], function() {
@@ -37,15 +41,15 @@ gulp.task('sass', ['clean'], function() {
 		.pipe(gulp.dest(client + 'dist/css'));
 });
 
-gulp.task('copyAngularFiles', ['clean'], function() {
+gulp.task('copy:angular', ['clean'], function() {
 	return gulp.src(client + 'angular/**/*')
 		.pipe(gulp.dest(client + 'dist/angular'));
 });
 
-gulp.task('copyIndex', ['clean'], function() {
+gulp.task('copy:index', ['clean'], function() {
 	return gulp.src(client + 'index.html')
 		.pipe(gulp.dest(client + 'dist'));
 });
 
 gulp.task('test', ['mocha']);
-gulp.task('build', ['clean', 'sass', 'copyAngularFiles', 'copyIndex']);
+gulp.task('build', ['sass', 'copy:index', 'copy:angular']);

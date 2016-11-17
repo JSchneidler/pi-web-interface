@@ -17,6 +17,12 @@ var getUptime = async.reflect(function(callback) {
 	});
 });
 
+var getHostname = async.reflect(function(callback) {
+	shell.exec('hostname', { silent: true }, function(code, stdout, stderr) {
+		callback(null, { hostname: stdout });
+	});
+});
+
 module.exports = {
 	index: function(req, res) {
 
@@ -36,6 +42,23 @@ module.exports = {
 			res.pass(response);
 		});
 
+	},
+
+	hostname: function(req, res) {
+
+		async.parallel([
+			getHostname
+		], function(err, results) {
+			response = {};
+
+			_.each(results, function(result) {
+				if (result.error) return;
+				_.assign(response, result.value);
+			});
+
+			res.pass(response);
+
+		});
 	},
 
 	files: function(req, res) {
