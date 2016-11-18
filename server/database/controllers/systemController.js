@@ -24,12 +24,13 @@ var getHostname = async.reflect(function(callback) {
 });
 
 module.exports = {
-	index: function(req, res) {
+	systemInfo: function(req, res) {
 
 		// Do each in parallel, run callback when all are complete
 		async.parallel([
 			getIP,
-			getUptime
+			getUptime,
+      getHostname
 		], function(err, results) {
 			response = {};
 
@@ -42,24 +43,7 @@ module.exports = {
 			res.pass(response);
 		});
 
-	},
-
-	hostname: function(req, res) {
-
-		async.parallel([
-			getHostname
-		], function(err, results) {
-			response = {};
-
-			_.each(results, function(result) {
-				if (result.error) return;
-				_.assign(response, result.value);
-			});
-
-			res.pass(response);
-
-		});
-	},
+	},	
 
 	files: function(req, res) {
 		shell.cd('~');
