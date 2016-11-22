@@ -13,13 +13,20 @@ var getUptime = async.reflect(function(callback) {
 	shell.exec('uptime', { silent: true }, function(code, stdout, stderr) {
 		results = stdout.split(',');
 
-		callback(null, { uptime: results[0].substr(1) });
+		callback(null, { uptime: results[0] });
 	});
 });
 
 var getHostname = async.reflect(function(callback) {
 	shell.exec('hostname', { silent: true }, function(code, stdout, stderr) {
 		callback(null, { hostname: stdout });
+	});
+});
+
+var getProcessInfo = async.reflect(function(callback) {
+	shell.exec('top | grep "" -m 4', { silent: true }, function(code, stdout, stderr) {
+    console.log(stdout);
+		callback(null, { processInfo: stdout });
 	});
 });
 
@@ -31,6 +38,7 @@ module.exports = {
 			getIP,
 			getUptime,
       getHostname
+      //getProcessInfo
 		], function(err, results) {
 			response = {};
 

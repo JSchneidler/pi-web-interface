@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var config = require('../../config');
-
-var systemController = require(config.server.dbPath + '/controllers/systemController'); 
+var systemController = require(config.__base + 'controllers/systemController'); 
 
 // GET /api/system
 router.get('/', systemController.systemInfo);

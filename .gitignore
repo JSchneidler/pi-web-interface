@@ -1,7 +1,15 @@
+# Do not upload node_modules, npm installs them
 server/node_modules
-server/npm-debug.log
-npm-debug.log
+# Do not upload .env file, security reasons
+server/.env
 
+# Do not upload any debug logs, cause fuck em
+**/npm-debug.log
+
+# Do not upload client dist folder, gulp builds it
 client/dist/**/*
 
+# Random IDE/OS files
 **/*.swp
+**/.DS_Store
+**/.idea

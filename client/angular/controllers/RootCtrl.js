@@ -9,6 +9,7 @@ app.run(['$rootScope', '$interval', '$timeout', '$http', function($rootScope, $i
       var new_stat = n[key];
       if (new_stat == old_stat) continue; 
 
+
       var stat = $('#info-'+key);
       stat.addClass('update-success');
       $timeout(function() {

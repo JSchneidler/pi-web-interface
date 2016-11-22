@@ -1,19 +1,10 @@
-var mongoose = require('mongoose');
-
-var config = require('./config'); // ./config.js
-
-function connect() {
-	mongoose.connect(config.db.prod_url, function(err) {
-	  if (err) {
-	    console.error('Could not connect to MongoDB.');
-	    return;
-	  }
-	  console.log('Connected to MongoDB.');
-	});
-
-	return {
-		"test": 2
-	};
+module.exports = function(mongoose) {
+  return {
+    connect: function() {
+      mongoose.connect(config.db_url, function(err) {
+        if (err) return console.error('Could not connect to MongoDB at ' + config.db_url);
+        console.log('Connected to MongoDB.');
+      });
+    }
+  };
 }
-
-module.exports = connect;

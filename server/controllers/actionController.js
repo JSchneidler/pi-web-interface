@@ -1,4 +1,4 @@
-var Action = require('../models/actionModel');
+var Action = require(config.dbPath + 'models/actionModel');
 
 /**
  * actionController.js
