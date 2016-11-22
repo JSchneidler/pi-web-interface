@@ -9,9 +9,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-		.state('index', {
+		.state('dashboard', {
 			url: '/',
-			templateUrl: 'angular/views/index.html'
+			templateUrl: 'angular/views/dashboard.html'
 		});
 
 }]);

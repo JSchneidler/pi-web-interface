@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-3">
+    <div class="panel panel-info">
+      <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
+      <div class="panel-body">
+        <div class="index-general-stats-container" ng-repeat="(stat, value) in info">
+          <p><strong>{{ stat }}:</strong> <span id="info-{{ stat }}">{{ value }}</span></p>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="panel panel-sm panel-info">
+      <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">Visual</h5></div>
+      <div class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="panel panel-info">
+      <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">Actions</h5></div>
+      <div class="panel-body"></div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-# mean-spa-skeleton
-A skeleton used for most projects using the MEAN stack.
+# pi-web-interface
+A web interface for Raspberry Pi and hopefully any Linux machine.
 
 ## Prereqs
 * Node.js
@@ -8,6 +8,14 @@ A skeleton used for most projects using the MEAN stack.
 ## Setup
 1. Run `bower install` in client directory.
 2. Run `npm install` in server directory.
-3. Ensure `mongo.url` in `server/config.js` is correct for your instance.
-4. Use nodemon or `npm start` to start the server.
-5. Navigate to `localhost:3000`, you should see "This is the index page."
+3. Run `cp .env.dev .env` in server directory to generate .env file.
+4. Ensure `.env` is configured to your environment.
+5. Run `gulp build` in the server directory to build
+6. Use nodemon or `npm start` to start the server.
+7. Navigate to `localhost:3000`, the dashboard should appear.
+
+## Testing
+Basic boilerplate for testing is in place, run `npm test` to check it out.
+
+## Contributing
+Please get in contact with an organization member to discuss steps for contributing.

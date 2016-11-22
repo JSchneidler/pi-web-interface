@@ -2,7 +2,7 @@ var chai = require('chai');
 
 var expect = chai.expect;
 
-var Action = require(require('../../config').server.dbPath + '/models/actionModel');
+var Action = config.dbPath + 'models/actionModel');
 
 describe('action', function() {
 	it('should be invalid if name is empty', function(done) {

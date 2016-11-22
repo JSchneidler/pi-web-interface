@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var config = require('../../config');
-
-var actionController = require(config.server.dbPath + '/controllers/actionController');
+var actionController = require(config.__base + 'controllers/actionController');
 
 /*
  * GET

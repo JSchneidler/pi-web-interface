@@ -1,0 +1,33 @@
+<html ng-app="app">
+<head>
+	<base href="/">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h4 class="navbar-brand" ng-if="info.hostname"><span class="text-green">Connected:</span> {{ info.hostname }}</h4>
+        <h4 class="navbar-brand text-red" ng-if="!info.hostname">Not Connected</h4>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div ui-view></div>
+  </div>
+
+  <!-- JS dependencies -->
+  <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="components/angular/angular.js"></script>
+  <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.js"></script>
+
+  <!-- Angular App Files -->
+  <script type="text/javascript" src="angular/app.js"></script>
+  <script type="text/javascript" src="angular/controllers/RootCtrl.js"></script>
+</body>
+</html>
