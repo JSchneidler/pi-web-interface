@@ -1,5 +1,6 @@
 var app = angular.module('app', [
-	'ui.router'
+	'ui.router',
+  'btford.socket-io'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {

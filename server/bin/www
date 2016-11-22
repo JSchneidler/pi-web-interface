@@ -32,6 +32,12 @@ server.on('listening', onListening);
 console.log('Server listening on port ' + port);
 
 /**
+ * Open socket listener and configure Socket.IO
+ */
+var io = require('socket.io').listen(server);
+require(config.__base + 'sockets/base')(io);
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
