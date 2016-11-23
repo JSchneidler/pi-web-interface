@@ -1,5 +1,6 @@
 var app = angular.module('app', [
-	'ui.router'
+	'ui.router',
+  'ngAnimate'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
