@@ -3,12 +3,12 @@
     <div class="panel panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
       <div class="panel-body">
-        <dl class="horizontal">
-          <div class="index-general-stats-container" ng-repeat="(stat, value) in info">
-            <dt ng-bind="stat"></dt>
-            <dd ng-bind="value" animate-on-change></dd>
-          </div> 
-        </dl>
+        <div ng-repeat="(stat, value) in info">
+          <p>
+            <strong><span ng-bind="stat"></span></strong>: 
+            <span ng-bind="value" animate-on-change></span>
+          </p>
+        </div> 
       </div>
     </div>
   </div>
