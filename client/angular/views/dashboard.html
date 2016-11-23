@@ -3,8 +3,11 @@
     <div class="panel panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
       <div class="panel-body">
-        <div class="index-general-stats-container" ng-repeat="(stat, value) in info">
-          <p><strong>{{ stat }}:</strong> <span id="info-{{ stat }}">{{ value }}</span></p>
+        <div ng-repeat="(stat, value) in info">
+          <p>
+            <strong><span ng-bind="stat"></span></strong>: 
+            <span ng-bind="value" animate-on-change></span>
+          </p>
         </div> 
       </div>
     </div>
