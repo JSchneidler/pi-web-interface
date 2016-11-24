@@ -1,15 +1,13 @@
-module.exports = function(io) {
-  io.on('connection', function(socket) {
+// TODO: Split listeners into individual modules: http://stackoverflow.com/questions/24815106/can-i-separate-socket-io-event-listeners-into-different-modules
+module.exports = function(socket) {
+  socket.on('connection', function(client) {
     console.log('Client connected');
-    socket.on('message', function(from, msg) {
-      console.log('received message from:', from, 'msg', JSON.stringify(msg));
-      console.log('broadcasting message');
-      console.log('payload is', msg);
-      io.sockets.emit('broadcast', {
-        payload: msg,
-        source: from
-      });
-      console.log('broadcast complete');
-    });
+
+    // Load event handlers
+    require('./terminal')(socket, client);
+  });
+
+  socket.on('disconnect', function() {
+    console.log('Client disconnected');
   });
 };

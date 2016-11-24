@@ -1,5 +1,8 @@
-app.run(['$rootScope', '$interval', '$timeout', '$http', function($rootScope, $interval, $timeout, $http) {
+app.run(['$rootScope', '$interval', '$http', 'Terminal', function($rootScope, $interval, $http, Terminal) {
 	$rootScope.info = {};
+  $rootScope.user = {
+    username: 'Jordan'
+  };
 
   var systemPolls = [getSystemInfo];
 
@@ -7,6 +10,8 @@ app.run(['$rootScope', '$interval', '$timeout', '$http', function($rootScope, $i
 	$interval(function() {
     poll(systemPolls);
   }, 2500);	
+
+  $rootScope.executeTerminalCmd = Terminal.execute;
 
   function poll(polls) {
     for(var i = 0; i < polls.length; i++) {

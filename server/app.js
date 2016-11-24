@@ -18,6 +18,11 @@ var db = require('./db')(mongoose).connect();
 // Create app from express
 var app = express();
 
+// Setup Socket.IO
+var io = require('socket.io')();
+app.io = io; // Attach io to app so it can be attached to server
+require('./sockets/base')(io); // Delegate socket logic to separate area
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(config.distPath, 'favicon.ico')));
 app.use(logger('dev'));
@@ -26,8 +31,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(config.distPath));
 
+// Middleware
+app.use('/api', require('./routes/middleware/response.js'));
+app.use('/api', require('./routes/middleware/socket-io.js')(io));
 // Use routes
-app.use('/api', require('./routes/api/index')) // Serve 'api_index' from /api
+app.use('/api', require('./routes/api/index')); // Serve 'api_index' from /api
 app.use('/api/action', require('./routes/api/action')); // Server 'api_action' from /api
 app.use('/api/system', require('./routes/api/system')); // Serve 'api_system' from /api
 app.use('/', require('./routes/angular')); // Serve 'angular' from /
