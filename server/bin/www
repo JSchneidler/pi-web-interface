@@ -32,6 +32,12 @@ server.on('listening', onListening);
 console.log('Server listening on port ' + port);
 
 /**
+ * Attach Socket.IO to server
+ */
+//app.io.attach(server, { 'pingInterval': '2000', 'pingTimeout': '5000' });
+app.io.attach(server);
+
+/**
  * Normalize a port into a number, string, or false.
  */
 

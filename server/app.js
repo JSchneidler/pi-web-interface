@@ -3,11 +3,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-// 3rd Party Modules
-require('dotenv').config();
 var path = require('path');
 var mongoose = require('mongoose');
+var io = require('socket.io')();
+
+// Set env variables
+require('dotenv').config();
 
 // Attach config to global
 global.config = require('./config');
@@ -15,14 +16,12 @@ global.config = require('./config');
 // Custom Modules
 var db = require('./db')(mongoose).connect();
 
-// Define routes
-var angular = require('./routes/angular');
-var api_index = require('./routes/api/index');
-var api_action = require('./routes/api/action');
-var api_system = require('./routes/api/system');
-
 // Create app from express
 var app = express();
+
+// Setup Socket.IO
+app.io = io; // Attach io to app so it can be attached to server
+require('./sockets/init')(io); // Delegate socket logic to separate area
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(config.distPath, 'favicon.ico')));
@@ -32,10 +31,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(config.distPath));
 
-app.use('/api', api_index) // Serve 'api_index' from /api
-app.use('/api/action', api_action); // Server 'api_action' from /api
-app.use('/api/system', api_system); // Serve 'api_system' from /api
-app.use('/', angular); // Serve 'angular' from /
+// Middleware
+app.use('/api', require('./routes/middleware/response.js'));
+app.use('/api', require('./routes/middleware/socket-io.js')(io));
+// Use routes
+app.use('/api', require('./routes/api/index')); // Serve 'api_index' from /api
+app.use('/api/action', require('./routes/api/action')); // Server 'api_action' from /api
+app.use('/', require('./routes/angular')); // Serve 'angular' from /
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
