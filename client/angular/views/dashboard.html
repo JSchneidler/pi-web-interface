@@ -3,12 +3,18 @@
     <div class="panel panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
       <div class="panel-body">
-        <div ng-repeat="(stat, value) in info">
-          <p>
-            <strong><span ng-bind="stat"></span></strong>: 
-            <span ng-bind="value" animate-on-change></span>
-          </p>
-        </div> 
+        <p ng-if="info.uptime">
+          <strong>Uptime:</strong> 
+          <span ng-bind="info.uptime" animate-on-change></span>
+        </p>
+        <p ng-if="info.ip">
+          <strong>IP:</strong> 
+          <span ng-bind="info.ip" animate-on-change></span>
+        </p>
+        <p ng-if="info.hostname">
+          <strong>Hostname:</strong> 
+          <span ng-bind="info.hostname" animate-on-change></span>
+        </p>
       </div>
     </div>
   </div>

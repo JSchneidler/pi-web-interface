@@ -4,25 +4,17 @@ app.run(['$rootScope', '$interval', '$http', 'Terminal', function($rootScope, $i
     username: 'Jordan'
   };
 
-  var systemPolls = [getSystemInfo];
-
-  poll(systemPolls);
-	$interval(function() {
-    poll(systemPolls);
-  }, 2500);	
-
   $rootScope.executeTerminalCmd = Terminal.execute;
 
-  function poll(polls) {
-    for(var i = 0; i < polls.length; i++) {
-      polls[i].call();
-    }
-  }
+  $rootScope.$on('socket:global.info', handleInfoStream);
 
-  function getSystemInfo() {
-    $http.get('/api/system').then(function(response) {
-      if (response.data.error) return;
-      $rootScope.info = response.data.data;
-    });
+  $rootScope.$on('socket:global.time', handleInfoStream);
+
+  function handleInfoStream(event, data) {
+    if (!data.success) {
+      return;
+    }
+
+    _.assign($rootScope.info, data.data);
   }
 }]);
