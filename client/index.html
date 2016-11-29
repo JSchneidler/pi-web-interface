@@ -20,8 +20,8 @@
 
   <div class="container-fluid">
     <!-- Alerts -->
-    <div class="alerts">
-      <alert type="danger">Error</alert>
+    <div ng-repeat="alert in alerts">
+      <alert id="{{ alert.id }}" title="{{ alert.title }}" type="{{ alert.type }}" message="{{ alert.message }}"></alert>
     </div>
 
     <!-- View -->
@@ -42,6 +42,7 @@
   <script type="text/javascript" src="angular/app.js"></script>
   <script type="text/javascript" src="angular/services/socket.js"></script>
   <script type="text/javascript" src="angular/services/terminal.js"></script>
+  <script type="text/javascript" src="angular/services/alert.js"></script>
   <script type="text/javascript" src="angular/controllers/RootCtrl.js"></script>
   <script type="text/javascript" src="angular/directives/alert.js"></script>
   <script type="text/javascript" src="angular/directives/animateOnChange.js"></script>

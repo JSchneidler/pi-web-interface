@@ -1,4 +1,5 @@
-app.run(['$rootScope', '$interval', '$http', 'Terminal', function($rootScope, $interval, $http, Terminal) {
+app.run(['$rootScope', 'Terminal', function($rootScope, Terminal) {
+  $rootScope.alerts = [];
 	$rootScope.info = {};
   $rootScope.user = {
     username: 'Jordan'

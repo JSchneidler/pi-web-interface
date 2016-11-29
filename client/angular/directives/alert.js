@@ -1,15 +1,18 @@
-app.directive('alert', ['$rootScope', function($rootScope) {
+app.directive('alert', [function() {
   return {
+    scope: {},
     restrict: 'E',
-    transclude: true,
     replace: true,
-    link: function(scope, element, attrs, ctrl, transclude) {
-      var message = transclude().html();
-      console.log(message);
-
-      scope.title = attrs.title ? attrs.title : 'Error';
-      scope.type = attrs.type ? attrs.type : 'danger';
-      scope.message = message ? message : 'An unknown error occurred';
+    controller: ['$scope', 'Alert', function($scope, Alert) {
+      $scope.remove = function() {
+        Alert.remove($scope.id);
+      };
+    }],
+    link: function($scope, element, attrs) {
+      $scope.id = attrs.id;
+      $scope.title = attrs.title ? attrs.title : 'Error';
+      $scope.type = attrs.type ? attrs.type : 'danger';
+      $scope.message = attrs.message ? attrs.message : 'An unknown error occurred';
     },
     templateUrl: '/angular/templates/alert.html'
   };
