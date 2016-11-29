@@ -11,6 +11,6 @@ app.directive('alert', ['$rootScope', function($rootScope) {
       scope.type = attrs.type ? attrs.type : 'danger';
       scope.message = message ? message : 'An unknown error occurred';
     },
-    templateUrl: 'Alert'
+    templateUrl: '/angular/templates/alert.html'
   };
 }]);
