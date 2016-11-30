@@ -1,11 +1,9 @@
-app.run(['$rootScope', 'Terminal', function($rootScope, Terminal) {
+app.run(['$rootScope', function($rootScope) {
   $rootScope.alerts = [];
 	$rootScope.info = {};
   $rootScope.user = {
     username: 'Jordan'
   };
-
-  $rootScope.executeTerminalCmd = Terminal.execute;
 
   $rootScope.$on('socket:global.info', handleInfoStream);
 
