@@ -1,15 +1,10 @@
 app.service('Terminal', ['$rootScope', 'Socket', function($rootScope, Socket) {
   var api = {};
 
-  Socket.forward('terminal');
-
-  $rootScope.$on('socket:terminal', function(event, data) {
-    console.log(event);
-    console.log(data);
-  });
+  api.Socket = Socket;
 
   api.execute = function(cmd) {
-    Socket.emitWithUser('terminal', cmd);
+    Socket.emitWithUser('terminal.input', cmd);
   };
 
   return api;

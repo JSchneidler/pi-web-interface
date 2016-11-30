@@ -9,5 +9,4 @@ module.exports = function(io) {
   setInterval(function() {
     controller.systemTime();
   }, 1000);
-
 };

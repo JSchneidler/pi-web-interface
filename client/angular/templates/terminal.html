@@ -1,0 +1,9 @@
+<div class="terminal">
+  <textarea class="terminal-output" readonly></textarea>
+  <div class="input-group">
+    <input ng-model="cmd" type="text" class="form-control" placeholder="echo 'Hello, world!'">
+    <span class="input-group-btn">
+      <button ng-click="execute(cmd)" class="btn btn-primary terminal-execute" type="button">Execute</button>
+    </span>
+  </div>
+</div>
