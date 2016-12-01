@@ -1,9 +1,19 @@
 @keyframes update-success {
-  15% { text-shadow: 0px 0px 3px green; }
+  15% { text-shadow: 0px 0px 5px green; }
   100% { text-shadow: none; }
 }
 
 .update-success {
   animation-name: update-success;
+  animation-duration: 1s;
+}
+
+@keyframes update-success-div {
+  15% { box-shadow: 0px 0px 10px green; }
+  100% { box-shadow: none; }
+}
+
+.update-success-div {
+  animation-name: update-success-div;
   animation-duration: 1s;
 }

@@ -1,34 +1,34 @@
 <div class="row">
-  <div class="col-xs-3">
+  <div class="col-sm-3">
     <div class="panel panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
       <div class="panel-body">
         <p ng-if="info.uptime">
           <strong>Uptime:</strong> 
-          <span ng-bind="info.uptime" animate-on-change></span>
+          <span ng-bind="info.uptime" flash-on-change></span>
         </p>
         <p ng-if="info.ip">
           <strong>IP:</strong> 
-          <span ng-bind="info.ip" animate-on-change></span>
+          <span ng-bind="info.ip" flash-on-change></span>
         </p>
         <p ng-if="info.hostname">
           <strong>Hostname:</strong> 
-          <span ng-bind="info.hostname" animate-on-change></span>
+          <span ng-bind="info.hostname" flash-on-change></span>
         </p>
       </div>
     </div>
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-5">
     <div class="panel panel-sm panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">Visual</h5></div>
       <div class="panel-body"></div>
     </div>
   </div>
-  <div class="col-xs-3">
+  <div class="col-sm-4">
     <div class="panel panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">Actions</h5></div>
       <div class="panel-body">
-        <terminal></terminal>
+        <terminal rows="20"></terminal>
       </div>
     </div>
   </div>

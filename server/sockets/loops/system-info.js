@@ -1,7 +1,7 @@
-var controller = require('./controllers/system-info.controller');
+var systemInfoController = require('./controllers/system-info.controller');
 
 module.exports = function(io) {
-  controller = controller(io); // Initialize controller with IO instance
+  controller = systemInfoController(io); // Initialize controller with IO instance
 
   setInterval(function() {
     controller.systemInfo();

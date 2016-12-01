@@ -6,11 +6,10 @@ module.exports = function(io) {
   };
 
   io.fail = function(event, data, clients=[]) {
-    handleEmission(event, data, clients, { success: true, data: data });
+    handleEmission(event, data, clients, { success: false, data: data });
   };
-};
 
-function handleEmission(event, data, clients, response) {
+  function handleEmission(event, data, clients, response) {
     // No clients provided, send to everyone
     if (!clients) return io.emit(event, response);
 
@@ -29,4 +28,7 @@ function handleEmission(event, data, clients, response) {
         io.to(room).emit(event, response);
       });
     }
-}
+  }
+};
+
+
