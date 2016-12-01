@@ -1,0 +1,14 @@
+.terminal {
+  .terminal-output {
+    position: relative;
+    z-index: 5;
+    overflow: auto;
+    padding: 5px;
+    border: 1px solid black;
+    border-bottom: none;
+  }
+
+  .terminal-execute {
+    border-top-right-radius: 0;
+  }
+}

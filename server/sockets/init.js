@@ -1,27 +1,32 @@
 // Middleware
 var middleware = require('./middleware');
 
-// Events
-var terminalEvents = require('./events/terminal');
-
 // Loops
 var infoLoops = require('./loops/system-info');
 
+// Events
+var terminalEvents = require('./events/terminal');
+
+
 module.exports = function(io) {
-  clients = [];
+  clients = {};
 
   middleware(io); // Attach IO middleware
 
   infoLoops(io); // Begin emission loops before clients connect
 
   io.on('connection', function(client) {
-    clients.push(client);
-    console.log('New client. Total: ' + clients.length);
+    //console.dir(client);
+    clients[client.id] = client;
+    console.log('New client. Total: ' + Object.keys(clients).length);
+
+    // Event handlers
     terminalEvents(io, client); // Attach terminal event handlers
 
+    // Disconnect handler
     client.on('disconnect', function() {
-      clients.splice(clients.indexOf(client), 1); // Remove client from list of clients
-      console.log('Lost client. Total: ' + clients.length);
+      delete clients[client.id];
+      console.log('Lost client. Total: ' + Object.keys(clients).length);
     });
   });
 };

@@ -4,14 +4,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/terminal.css">
 </head>
 <body>
   <!-- Nav -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <h4 class="navbar-brand" ng-if="info.hostname"><span class="text-green">Connected:</span> {{ info.hostname }}</h4>
+        <h4 class="navbar-brand" ng-if="info.hostname" ng-cloak><span class="text-green">Connected:</span> {{ info.hostname }}</h4>
         <h4 class="navbar-brand text-red" ng-if="!info.hostname">Not Connected</h4>
       </div>
     </div>
@@ -29,14 +30,15 @@
   </div>
 
   <!-- JS dependencies -->
-  <script type="text/javascript" src="components/lodash/dist/lodash.js"></script>
-  <script type="text/javascript" src="socket.io/socket.io.js"></script>
-  <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="components/lodash/dist/lodash.js"></script>
+  <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="components/angular/angular.js"></script>
   <script type="text/javascript" src="components/angular-ui-router/release/angular-ui-router.js"></script>
   <script type="text/javascript" src="components/angular-socket-io/socket.js"></script>
   <script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="components/angular-sanitize/angular-sanitize.js"></script>
 
   <!-- Angular App Files -->
     <!-- Init -->
@@ -49,6 +51,7 @@
   <script type="text/javascript" src="angular/services/terminal.js"></script>
   <script type="text/javascript" src="angular/controllers/RootCtrl.js"></script>
   <script type="text/javascript" src="angular/directives/alert.js"></script>
-  <script type="text/javascript" src="angular/directives/animateOnChange.js"></script>
+  <script type="text/javascript" src="angular/directives/terminal.js"></script>
+  <script type="text/javascript" src="angular/directives/flashOnChange.js"></script>
 </body>
 </html>

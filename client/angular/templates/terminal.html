@@ -1,0 +1,12 @@
+<div class="terminal">
+  <div class="terminal-output" ng-bind-html="output" flash-on-change></div>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <input type="checkbox" ng-model="clear" data-toggle="tooltip" title="Clear input on execution" aria-label="Clear input on execution" class="hover-tip">
+    </span>
+    <input type="text" ng-model="cmd" class="form-control" placeholder="echo 'Hello, world!'">
+    <span class="input-group-btn">
+      <button type="button" ng-click="execute(cmd)" class="btn btn-primary terminal-execute" >Execute</button>
+    </span>
+  </div>
+</div>

@@ -1,3 +1,6 @@
+// Set env variables
+require('dotenv').config();
+
 var express = require('express');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,8 +10,6 @@ var path = require('path');
 var mongoose = require('mongoose');
 var io = require('socket.io')();
 
-// Set env variables
-require('dotenv').config();
 
 // Attach config to global
 global.config = require('./config');
