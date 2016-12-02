@@ -1,6 +1,8 @@
 app.run(['$rootScope', function($rootScope) {
   $rootScope.alerts = [];
-	$rootScope.info = {};
+	$rootScope.info = {
+    cpu: [2, 5, 10, 37, 67, 42, 54, 45, 64, 23, 8, 10, 4, 2]
+  };
   $rootScope.user = {
     username: 'Jordan'
   };

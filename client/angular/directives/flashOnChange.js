@@ -19,6 +19,11 @@ app.directive('flashOnChange', ['$animate', '$timeout', function($animate, $time
 
       if (!model) return console.log('Incompatible binding with animate-on-change directive');
 
+      attrs.$observe('ngModel', function(val) {
+        console.log('observing');
+        console.log(val);
+      });
+
       scope.$watch(model, function(n, o) {
         //if (n !== o) playUpdateAnimation(element);
         // For some reason all this does is prevent it from playing
