@@ -1,0 +1,11 @@
+/* Line Chart */
+.d3-line-chart {
+  width: 100%;
+  max-width: 1000px;
+
+  path.line {
+    fill: none;
+    stroke: green;
+    stroke-width: 1px;
+  }
+}
