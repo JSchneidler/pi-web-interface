@@ -4,15 +4,15 @@
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">General</h5></div>
       <div class="panel-body">
         <p ng-if="info.uptime">
-          <strong>Uptime:</strong> 
+          <strong>Uptime:</strong>
           <span ng-bind="info.uptime" flash-on-change></span>
         </p>
         <p ng-if="info.ip">
-          <strong>IP:</strong> 
+          <strong>IP:</strong>
           <span ng-bind="info.ip" flash-on-change></span>
         </p>
         <p ng-if="info.hostname">
-          <strong>Hostname:</strong> 
+          <strong>Hostname:</strong>
           <span ng-bind="info.hostname" flash-on-change></span>
         </p>
       </div>
@@ -22,7 +22,7 @@
     <div class="panel panel-sm panel-info">
       <div class="panel-heading panel-heading-sm"><h5 class="text-panel-heading">Visual</h5></div>
       <div class="panel-body">
-        <line-chart data="info.cpu"></line-chart>
+        <line-chart stats="{ 'cpu': info.cpu }"></line-chart>
       </div>
     </div>
   </div>

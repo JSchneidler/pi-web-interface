@@ -3,9 +3,19 @@
   width: 100%;
   max-width: 1000px;
 
-  path.line {
-    fill: none;
-    stroke: green;
-    stroke-width: 1px;
+  .chart {
+    display: block;
+    margin: 0 auto;
+
+    .domain {
+      fill: none;
+      stroke: black;
+      stroke-width: 1;
+    }
+ 
+    path {
+      fill: none;
+      stroke-width: 1.5;
+    }
   }
 }
